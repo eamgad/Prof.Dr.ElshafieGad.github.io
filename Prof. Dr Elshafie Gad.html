@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prof. Dr Elshafie Gad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: sticky top bar, left-aligned hero with monogram, then ruled sections with a narrow label column and a wide content column. */
+:root {
+  --bg: #f6f4ef;
+  --surface: #ffffff;
+  --ink: #16202e;
+  --muted: #5a6575;
+  --line: #d9d5cb;
+  --accent: #0f5c63;
+  --accent-ink: #ffffff;
+  --display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --body: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1620; --surface: #17212e; --ink: #e8ebf0; --muted: #98a3b3;
+    --line: #2a3646; --accent: #4fc0c9; --accent-ink: #0f1620;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1620; --surface: #17212e; --ink: #e8ebf0; --muted: #98a3b3;
+  --line: #2a3646; --accent: #4fc0c9; --accent-ink: #0f1620;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.0625rem/1.65 var(--body); }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+
+header.bar { position: sticky; top: 0; z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); }
+.bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 12px; padding-bottom: 12px; }
+.brand { font: 600 1.05rem var(--display); text-decoration: none; color: var(--ink); }
+nav { display: flex; gap: 20px; flex-wrap: wrap; }
+nav a { color: var(--muted); text-decoration: none; font-weight: 500; font-size: .95rem; }
+nav a:hover { color: var(--accent); }
+
+.hero { padding: 72px 0 56px; }
+.hero .wrap { display: grid; grid-template-columns: 1fr 220px; gap: 48px; align-items: center; }
+.kicker { font-weight: 600; letter-spacing: .08em; text-transform: uppercase; font-size: .8rem; color: var(--accent); margin: 0 0 14px; }
+h1 { font: 700 clamp(2.2rem, 5.5vw, 3.6rem)/1.08 var(--display); margin: 0 0 18px; text-wrap: balance; }
+.lead { font-size: 1.2rem; color: var(--muted); max-width: 56ch; margin: 0 0 28px; }
+.actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn { display: inline-block; padding: 11px 20px; border-radius: 6px; font-weight: 600; text-decoration: none; border: 1.5px solid var(--accent); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); }
+.btn.ghost { color: var(--accent); }
+.mono { aspect-ratio: 5/6; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; display: grid; place-items: center; font: 700 4.2rem var(--display); color: var(--accent); position: relative; }
+.mono { overflow: hidden; }
+.mono img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.links { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 22px; font-weight: 500; }
+details { margin-top: 12px; }
+summary { cursor: pointer; font-weight: 600; color: var(--accent); }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 14px 0 0; list-style: none; }
+.tags li { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 4px 12px; font-size: .92rem; }
+h3.sub { font: 600 1.1rem var(--display); margin: 28px 0 10px; }
+.thesis { list-style: none; margin: 0; padding: 0; }
+.thesis li { padding: 10px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 56px 1fr; gap: 14px; }
+.thesis .deg { font-weight: 600; color: var(--accent); }
+.thesis small { display: block; color: var(--muted); }
+
+section { border-top: 1px solid var(--line); padding: 52px 0; }
+section .wrap { display: grid; grid-template-columns: 200px 1fr; gap: 40px; }
+h2 { font: 600 1.5rem var(--display); margin: 0; }
+.body > :first-child { margin-top: 0; }
+.body p { max-width: 68ch; }
+
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; margin-top: 28px; }
+.fact { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 16px; }
+.fact b { display: block; font: 700 1.6rem var(--display); color: var(--accent); }
+.fact span { color: var(--muted); font-size: .92rem; }
+
+.areas { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.areas li { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 6px; padding: 16px 18px; }
+.areas h3 { font: 600 1.1rem var(--display); margin: 0 0 4px; }
+.areas p { margin: 0; color: var(--muted); }
+
+.pubs { list-style: none; margin: 0; padding: 0; }
+.pubs li { display: grid; grid-template-columns: 64px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.pubs li:first-child { padding-top: 0; }
+.pubs .yr { font: 600 1rem var(--display); color: var(--accent); font-variant-numeric: tabular-nums; }
+.pubs .t { font-weight: 600; }
+.pubs .m { color: var(--muted); font-size: .95rem; }
+.note { margin-top: 18px; font-size: .9rem; color: var(--muted); }
+
+.timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
+.timeline li { display: grid; grid-template-columns: 120px 1fr; gap: 16px; }
+.timeline .when { color: var(--muted); font-variant-numeric: tabular-nums; }
+.timeline b { display: block; }
+
+.contact-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.contact-list span { display: inline-block; min-width: 84px; color: var(--muted); }
+
+footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: .92rem; }
+
+@media (max-width: 760px) {
+  .hero { padding: 40px 0 36px; }
+  .hero .wrap { grid-template-columns: 1fr; gap: 28px; }
+  .mono { max-width: 160px; font-size: 3.2rem; order: -1; }
+  section .wrap { grid-template-columns: 1fr; gap: 18px; }
+  .timeline li { grid-template-columns: 1fr; gap: 2px; }
+  nav { gap: 14px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#top">Prof. Dr Elshafie Gad</a>
+    <nav aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#experience">Experience</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <p class="kicker">Professor of Petroleum &amp; Petrochemicals</p>
+        <h1>Prof. Dr Elshafie Gad</h1>
+        <p class="lead">Applied physical chemistry at the Egyptian Petroleum Research Institute, Cairo. My work covers surfactants, cement admixtures, polymers, corrosion inhibition and computational chemistry.</p>
+        <div class="actions">
+          <a class="btn primary" href="#publications">View publications</a>
+          <a class="btn ghost" href="#contact">Contact me</a>
+        </div>
+        <div class="links"><a href="https://orcid.org/0000-0002-3458-3502">ORCID</a><a href="https://youtube.com/@compuchem">YouTube channel</a></div>
+      </div>
+      <div class="mono"><img alt="Portrait of Prof. Dr Elshafie Gad" src="data:image/jpeg;base64,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"></div>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="wrap">
+      <h2>About</h2>
+      <div class="body">
+        <p>I am a Doctor of Physical Chemistry and Professor of Petroleum &amp; Petrochemicals at the Egyptian Petroleum Research Institute (EPRI), Nasr City, Cairo. My field is applied physical chemistry: petroleum refining, petrochemicals, polymers and surface-active agents.</p>
+        <p>I have led research and industrial development on polymer-cement composites, concrete superplasticizers, and nanoparticle and surfactant interactions. My current interests are computational science and statistical analysis.</p>
+        <div class="facts">
+          <div class="fact"><b>56</b><span>Publications listed</span></div>
+          <div class="fact"><b>14</b><span>M.Sc. and Ph.D. theses supervised</span></div>
+          <div class="fact"><b>Since 2001</b><span>Professor at EPRI</span></div>
+          <div class="fact"><b>57</b><span>Industrial technical reports, Fosroc</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="research">
+    <div class="wrap">
+      <h2>Research</h2>
+      <div class="body">
+        <ul class="areas">
+          <li><h3>Surfactants and colloids</h3><p>Surface and thermodynamic properties of cationic, anionic and nonionic surfactants, micellization, HLB and CMC, and biodegradable surfactants from natural products.</p></li>
+          <li><h3>Cement, concrete and polymers</h3><p>Superplasticizers and admixtures, polymer-impregnated cement pastes, rheology, and thermal decomposition of cement pastes. Stabilization and electrical properties of poly(vinyl chloride).</p></li>
+          <li><h3>Corrosion inhibition and adsorption</h3><p>Surfactants and drug molecules as corrosion inhibitors for steel and aluminium, studied by experiment and DFT. Adsorption on carbon nanotubes and graphene.</p></li>
+          <li><h3>Petroleum and petrochemicals</h3><p>Flow improvers and pour point depressants for waxy crudes, emulsion stability, and direct conversion of natural gas to petrochemicals.</p></li>
+          <li><h3>Computational chemistry</h3><p>QSPR models for HLB, flash point and octane number, molecular docking, and kinetic analysis of solid-state decomposition.</p></li>
+        </ul>
+        <h3 class="sub">Tools</h3>
+        <ul class="tags">
+          <li>ORCA 6.1.1</li><li>Quantum Espresso</li><li>AutoDock4</li><li>Statistical analysis</li><li>Windows and Linux (Ubuntu)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="publications">
+    <div class="wrap">
+      <h2>Selected publications</h2>
+      <div class="body">
+        <ul class="pubs">
+          <li><span class="yr">2022</span><div><div class="t">Degradation of local Brilliant Blue R dye with PVDF/MWCNTs/TiO2 photocatalysts and plasma discharge</div><div class="m">Mohamed, Fahmy, Helal, Ahmed, Elsayed, Kamoun, Gad. Journal of Environmental Chemical Engineering, 10(1), 106854.</div></div></li>
+          <li><span class="yr">2021</span><div><div class="t">Quantum descriptors, molecular docking and dynamic simulation of antiviral drugs with Covid-19</div><div class="m">Gad et al. Egyptian Journal of Petroleum, 30(1), 15–23.</div></div></li>
+          <li><span class="yr">2020</span><div><div class="t">Electronic and photovoltaic properties of chromen-2-one-based organic dyes for dye-sensitized solar cells</div><div class="m">Gad, Kamar, Mousa. Egyptian Journal of Petroleum, 29(2), 203–209.</div></div></li>
+          <li><span class="yr">2019</span><div><div class="t">Corrosion inhibition of (2Z,2′Z)-4,4′-(1,2-phenylene bis(azanediyl))bis(4-oxobut-2-enoic acid) for carbon steel in acidic media using DFT</div><div class="m">Zohdy, El-Shamy, Kalmouch, Gad. Egyptian Journal of Petroleum, 28(4), 355–359.</div></div></li>
+          <li><span class="yr">2018</span><div><div class="t">Decomposition mechanism of neat and superplasticized ordinary Portland cement pastes by thermal analysis</div><div class="m">Gad, Habib, Mousa. Journal of Silicate Based and Composite Materials, 70(4), 118–124.</div></div></li>
+          <li><span class="yr">2016</span><div><div class="t">Melatonin as a safe corrosion inhibitor for carbon steel: experiment and DFT</div><div class="m">Al-Fahemi, Abdallah, Gad, Jahdaly. Journal of Molecular Liquids, 222, 1157–1163.</div></div></li>
+          <li><span class="yr">2014</span><div><div class="t">QSPR models for octane number prediction</div><div class="m">Al-Fahemi, Albis, Gad. Journal of Theoretical Chemistry, 2014, 520652.</div></div></li>
+          <li><span class="yr">2010</span><div><div class="t">Direct conversion of natural gas to petrochemicals, Part I: Mo on HZSM-5 and H-BEA catalysts</div><div class="m">Aboul-Gheit, Awadallah, Youssef, Gad, Moustafa, El-Masry. Applied Catalysis A: General, 385(1–2), 80–87.</div></div></li>
+          <li><span class="yr">2008</span><div><div class="t">QSPR for HLB of non-ionic surfactants based on the polyethylene oxide group</div><div class="m">Gad, Khairou. Journal of Dispersion Science and Technology, 29(7), 967–973.</div></div></li>
+          <li><span class="yr">1997</span><div><div class="t">Surface and thermodynamic parameters of sodium N-acyl sarcosinate surfactant solutions</div><div class="m">Gad, El-Sukkary, Ismail. Journal of the American Oil Chemists' Society, 74(1), 43–47.</div></div></li>
+        </ul>
+        <p class="note">Ten of 56 publications are shown. The full list is on my <a href="https://orcid.org/0000-0002-3458-3502">ORCID record</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <h2>Experience and education</h2>
+      <div class="body">
+        <ul class="timeline">
+          <li><span class="when">2001 – present</span><div><b>Professor of Petroleum &amp; Petrochemicals</b>Egyptian Petroleum Research Institute (EPRI), Cairo</div></li>
+          <li><span class="when">2005 – 2015</span><div><b>Professor of Petroleum &amp; Petrochemicals</b>Chemistry Dept., Faculty of Applied Science, Umm Al-Qura University, Saudi Arabia</div></li>
+          <li><span class="when">1998 – 2002</span><div><b>Project Leader</b>Cairo Development Center, Fosroc International Group Development. Developed water-soluble polymer admixtures and polycarboxylate superplasticizers for Middle East concrete.</div></li>
+          <li><span class="when">1994 – 2001</span><div><b>Associate Professor</b>EPRI</div></li>
+          <li><span class="when">1979 – 1994</span><div><b>Chemist, Research Assistant, Lecturer Assistant, Researcher</b>EPRI</div></li>
+        </ul>
+        <h3 class="sub">Education</h3>
+        <ul class="timeline">
+          <li><span class="when">1989</span><div><b>Ph.D. in Physical Chemistry</b>Faculty of Science, Ain Shams University</div></li>
+          <li><span class="when">1985</span><div><b>M.Sc. in Physical Chemistry</b>Faculty of Science, Ain Shams University</div></li>
+          <li><span class="when">1977</span><div><b>B.Sc. in Chemistry</b>Faculty of Science, Ain Shams University</div></li>
+        </ul>
+        <h3 class="sub">Projects</h3>
+        <ul class="timeline">
+          <li><span class="when">2003 – 2004</span><div><b>Natural gas to petrochemicals</b>Direct conversion of natural gas to primary petrochemicals</div></li>
+          <li><span class="when">1995</span><div><b>Cationic polyelectrolytes</b>Prepared from vinyl chloride monomer production streams</div></li>
+          <li><span class="when">1992 – 1993</span><div><b>VCM by-products</b>Use of polychlorinated hydrocarbon by-products from the Egyptian Petrochemical Co.</div></li>
+          <li><span class="when">1991 – 1994</span><div><b>Ballast water emulsion control</b>Eight technical reports for the Academy of Scientific Research and Technology</div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="teaching">
+    <div class="wrap">
+      <h2>Teaching and supervision</h2>
+      <div class="body">
+        <p><b>Umm Al-Qura University (2005–2015).</b> Taught and led research in petroleum chemistry, petrochemical processes and industrial catalysis. Developed course materials and mentored undergraduate and postgraduate projects.</p>
+        <p><b>Higher Technological Institute, 10th of Ramadan City (1995–1998).</b> Taught industrial chemistry and polymer science, including curriculum development, laboratory instruction and graduation projects.</p>
+        <h3 class="sub">Theses supervised</h3>
+        <ul class="thesis">
+          <li><span class="deg">Ph.D. 2004</span><div>Influence of polyacrylate admixtures on fresh and hardened cement pastes<small>Ain Shams University</small></div></li>
+          <li><span class="deg">M.Sc. 2010</span><div>QSPR models for predicting physicochemical properties of organic hydrocarbons<small>Umm Al-Qura University</small></div></li>
+          <li><span class="deg">M.Sc. 2008</span><div>Biodegradable surfactants from natural products<small>Monofiah University</small></div></li>
+          <li><span class="deg">M.Sc. 2008</span><div>Self-aggregation molecules and their application<small>Umm Al-Qura University</small></div></li>
+        </ul>
+        <details>
+          <summary>Earlier theses (1993 – 2001)</summary>
+          <ul class="thesis">
+            <li><span class="deg">M.Sc. 2001</span><div>Hydraulic properties of cement pastes containing organic admixtures<small>Ain Shams University</small></div></li>
+            <li><span class="deg">Ph.D. 1999</span><div>Physicochemical properties of self-assembling molecules and their application<small>Cairo University, Beni Suef Branch</small></div></li>
+            <li><span class="deg">Ph.D. 1999</span><div>Preparation and physicochemical studies of some amine surfactants<small>Ain Shams University</small></div></li>
+            <li><span class="deg">Ph.D. 1998</span><div>Hardened cement pastes using concrete admixtures<small>Zagazig University</small></div></li>
+            <li><span class="deg">Ph.D. 1997</span><div>Synthesis and evaluation of organic emulsion breakers for oil field wastewater<small>University College for Women, Ain Shams University</small></div></li>
+            <li><span class="deg">Ph.D. 1997</span><div>Preparation and physicochemical studies of cationic mixed surfactants<small>Ain Shams University</small></div></li>
+            <li><span class="deg">M.Sc. 1995</span><div>Anionic and cationic surfactants from alkyl-haloacetates<small>Cairo University, Beni-Suef Branch</small></div></li>
+            <li><span class="deg">M.Sc. 1994</span><div>Stabilization of poly(vinyl chloride) against various modes of degradation<small>Cairo University</small></div></li>
+            <li><span class="deg">Ph.D. 1993</span><div>Polymer-impregnated cement composites<small>Ain Shams University</small></div></li>
+          </ul>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <h2>Contact</h2>
+      <div class="body">
+        <p>For research collaboration, supervision enquiries, speaking invitations or media requests, please get in touch.</p>
+        <ul class="contact-list">
+          <li><span>Email</span>eamgad_99@hotmail.com</li>
+          <li><span>Office</span>Egyptian Petroleum Research Institute (EPRI), Nasr City, 11727 Cairo, Egypt</li>
+          <li><span>ORCID</span><a href="https://orcid.org/0000-0002-3458-3502">0000-0002-3458-3502</a></li>
+          <li><span>YouTube</span><a href="https://youtube.com/@compuchem">@compuchem</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">&copy; 2026 Prof. Dr Elshafie Gad. All rights reserved.</div>
+</footer>
+</body>
+</html>
